@@ -27,7 +27,7 @@ jobs:
         run: sleep 30  
 
       - name: Check if Ant Media Server is running
-        run: docker exec antmediaserver 'wget http://localhost:5081 -O index.html'
+        run: docker exec antmediaserver 'wget http://localhost:5080 -O index.html'
 
       - name: Check Java process
         run: docker exec antmediaserver ps aux | grep java | grep -q antmedia
