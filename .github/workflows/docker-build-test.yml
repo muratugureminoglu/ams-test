@@ -19,3 +19,18 @@ jobs:
 
       - name: Build Docker image
         run: docker build --network=host -t antmediaserver:latest --build-arg AntMediaServer=ant-media-server-community.zip .
+
+      - name: Run the image
+        run: docker run -d -p 5080:5080 --name antmediaserver antmediaserver
+
+      - name: Wait for Ant Media Server to start
+        run: sleep 30  # Bekleme süresini ihtiyaca göre ayarlayabilirsiniz
+
+      - name: Check if Ant Media Server is running
+        run: docker exec antmediaserver wget http://localhost:5081 -O index.html'
+
+      - name: Check Java process
+        run: docker exec antmediaserver ps aux | grep java | grep -q antmedia
+
+      - name: Stop and remove the container
+        run: docker stop antmediaserver && docker rm antmediaserver
