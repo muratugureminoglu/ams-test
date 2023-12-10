@@ -21,6 +21,7 @@ jobs:
           sleep 30
           ls -alh
           ps -aux |grep antmedia
+          find / -iname "red5.properties"
       - name: Upgrade Ant Media Server
         run: |
           sudo bash ./upgrade.sh
