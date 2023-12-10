@@ -7,8 +7,9 @@ on: [push]
 #    - cron: '0 0 * * 0'  # Runs every Sunday at 00:00 UTC
 
 jobs:
-  install_ant_nedia_server:
+  install_ant_media_server:
     runs-on: ubuntu-20.04
+    name: Install Previous Version of Ant Media Server
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -20,6 +21,7 @@ jobs:
           sleep 30
         
   upgrade_ant_media_server:
+    needs: install_ant_media_server
     runs-on: ubuntu-20.04
     name: Upgrade Ant Media Server
     steps:
