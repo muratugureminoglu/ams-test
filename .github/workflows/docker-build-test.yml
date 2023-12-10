@@ -26,14 +26,8 @@ jobs:
       - name: Wait for Ant Media Server to start
         run: sleep 30  
 
-#      - name: Check if Ant Media Server is running
-#        run: docker exec antmediaserver 'wget http://localhost:5080 -O index.html'
-
       - name: Check if Ant Media Server is running
-        run: docker ps -a
-
-      - name: Check Java process
-        run: docker exec antmediaserver ps aux | grep java | grep -q antmedia
+        run: wget http://localhost:5080 -O index.html
 
       - name: Stop and remove the container
         run: docker stop antmediaserver && docker rm antmediaserver
