@@ -22,5 +22,6 @@ jobs:
           ls /usr/local/antmedia/conf
       - name: Upgrade Ant Media Server
         run: |
+          ls /usr/local/antmedia/conf
           sudo bash ./upgrade.sh
 
