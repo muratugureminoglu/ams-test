@@ -23,5 +23,5 @@ jobs:
           ps -aux |grep antmedia
       - name: Upgrade Ant Media Server
         run: |
-          bash ./upgrade.sh
+          sudo bash ./upgrade.sh
 
