@@ -19,15 +19,7 @@ jobs:
           wget https://raw.githubusercontent.com/ant-media/Scripts/master/install_ant-media-server.sh
           bash ./install_ant-media-server.sh -i ams_community.zip
           sleep 30
-        
-  upgrade_ant_media_server:
-    needs: install_ant_media_server
-    runs-on: ubuntu-20.04
-    name: Upgrade Ant Media Server
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Run upgrade script
+      - name: Upgrade Ant Media Server
         run: |
           bash ./upgrade.sh
 
