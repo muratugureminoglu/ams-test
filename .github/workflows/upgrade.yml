@@ -20,6 +20,7 @@ jobs:
           sudo bash ./install_ant-media-server.sh -i ams_community.zip
           sleep 30
           ls -alh
+          ps -aux |grep antmedia
       - name: Upgrade Ant Media Server
         run: |
           bash ./upgrade.sh
