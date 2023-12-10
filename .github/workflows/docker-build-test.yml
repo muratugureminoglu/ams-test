@@ -27,7 +27,7 @@ jobs:
         run: |
           timeout=120  
           start_time=$(date +%s)
-          until wget http://localhost:5081 -O index.html; do
+          until wget http://localhost:5080 -O index.html; do
             current_time=$(date +%s)
             elapsed_time=$((current_time - start_time))
             
