@@ -57,7 +57,7 @@ check_ams() {
 if [ "$(printf "%s\n" "$LOCAL_VERSION" "$REMOTE_VERSION" | sort -V | tail -n 1)" = "$LOCAL_VERSION" ]; then
     echo "No update required."
 elif [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
-    echo "You are using $LOCAL_VERSION and the latest version is $GITHUB_LATEST_VERSION"
+    echo "The current version is being upgraded to $GITHUB_LATEST_VERSION from version $LOCAL_VERSION"
     check_ams
 else
     # If the versions are equal, there is no need for an update
