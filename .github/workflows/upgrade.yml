@@ -7,9 +7,9 @@ on: [push]
 #    - cron: '0 0 * * 0'  # Runs every Sunday at 00:00 UTC
 
 jobs:
-  install_ant_media_server:
+  install_and_upgrade_ant_media_server:
     runs-on: ubuntu-20.04
-    name: Install Previous Version of Ant Media Server
+    name: Install Previous Version of Ant Media Server and Install the Latest Version
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -19,6 +19,7 @@ jobs:
           wget https://raw.githubusercontent.com/ant-media/Scripts/master/install_ant-media-server.sh
           bash ./install_ant-media-server.sh -i ams_community.zip
           sleep 30
+          ls -alh
       - name: Upgrade Ant Media Server
         run: |
           bash ./upgrade.sh
