@@ -17,7 +17,7 @@ jobs:
         run: |
           curl --progress-bar -o ams_community.zip -L "$(curl -s -H "Accept: application/vnd.github+json" https://api.github.com/repos/ant-media/Ant-Media-Server/releases | jq -r '.[1].assets[0].browser_download_url')"
           wget https://raw.githubusercontent.com/ant-media/Scripts/master/install_ant-media-server.sh
-          bash ./install_ant-media-server.sh -i ams_community.zip
+          sudo bash ./install_ant-media-server.sh -i ams_community.zip
           sleep 30
           ls -alh
       - name: Upgrade Ant Media Server
