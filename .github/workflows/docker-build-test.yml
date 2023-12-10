@@ -1,1 +1,21 @@
+name: Docker Image Build/Push and Development Test
 
+on: [push]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_URL: antmedia/enterprise
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Download the latest version of Ant Media Server
+        run: curl -L -o ant-media-server-community.zip $(curl -s https://api.github.com/repos/ant-media/Ant-Media-Server/releases/latest | grep "browser_download_url" | cut -d '"' -f 4)
+
+      - name: Download Dockerfile
+        run: wget --quiet https://raw.githubusercontent.com/ant-media/Scripts/master/docker/Dockerfile_Process -O Dockerfile
+
+      - name: Build Docker image
+        run: docker build --network=host -t antmediaserver:latest --build-arg AntMediaServer=ant-media-server-community.zip .
