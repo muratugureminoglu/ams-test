@@ -24,10 +24,10 @@ jobs:
         run: docker run -d -p 5080:5080 --name antmediaserver antmediaserver
 
       - name: Wait for Ant Media Server to start
-        run: sleep 30  # Bekleme süresini ihtiyaca göre ayarlayabilirsiniz
+        run: sleep 30  
 
       - name: Check if Ant Media Server is running
-        run: docker exec antmediaserver wget http://localhost:5081 -O index.html'
+        run: docker exec antmediaserver 'wget http://localhost:5081 -O index.html'
 
       - name: Check Java process
         run: docker exec antmediaserver ps aux | grep java | grep -q antmedia
