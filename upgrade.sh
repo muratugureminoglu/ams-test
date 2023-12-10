@@ -24,8 +24,9 @@ REMOTE_VERSION=$(curl -s "https://antmedia.io/rest/VERSION")
 LOCAL_VERSION=$(unzip -p $INSTALL_DIRECTORY/ant-media-server.jar | grep -a "Implementation-Version"|cut -d' ' -f2 | tr -d '\r')
 GITHUB_LATEST_VERSION=$(curl -s -H "Accept: application/vnd.github+json" https://api.github.com/repos/ant-media/Ant-Media-Server/releases/latest | jq -r '.tag_name' | cut -d 'v' -f 2)
 
-if [ "$#" -eq 1 ]; then
-    INSTALL_DIRECTORY="$1"
+# Check if a variable DIR is provided (this is for the automation)
+if [ -n "$DIR" ]; then
+    INSTALL_DIRECTORY="$DIR"
 fi
 
 # If not installed jq package, install it
