@@ -1,12 +1,10 @@
-name: Docker Image Build/Push and Development Test
+name: CI/CD for Docker Images - Ant Media Server (Ubuntu & Rocky Linux)
 
 on: [push]
 
 jobs:
   ams_ubuntu_docker_test:
     runs-on: ubuntu-latest
-    env:
-      DOCKER_URL: antmedia/enterprise
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -45,8 +43,6 @@ jobs:
 
   ams_rockylinux_docker_test:
     runs-on: ubuntu-latest
-    env:
-      DOCKER_URL: antmedia/enterprise
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
