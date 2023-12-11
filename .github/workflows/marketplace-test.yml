@@ -16,7 +16,7 @@ jobs:
           sleep 30
       - name: Upgrade Ant Media Server
         run: |
-          wget https://raw.githubusercontent.com/ant-media/Ant-Media-Server/adc6096c54ee19e0f9aa0ee4e65e1495883ffb27/src/main/server/conf/jwt_marketplace_check.sh
+          wget -P /usr/local/antmedia/conf/ https://raw.githubusercontent.com/ant-media/Ant-Media-Server/adc6096c54ee19e0f9aa0ee4e65e1495883ffb27/src/main/server/conf/jwt_marketplace_check.sh
           source /usr/local/antmedia/conf/jwt_marketplace_check.sh
           result_marketplace=$(check_marketplace)
           echo $result_marketplace
